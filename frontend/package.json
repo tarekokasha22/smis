@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.99.0",
     "axios": "^1.15.0",
+    "date-fns": "^4.1.0",
     "dayjs": "^1.11.20",
     "i18next": "^26.0.6",
     "lucide-react": "^1.8.0",
