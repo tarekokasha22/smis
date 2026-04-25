@@ -1,0 +1,150 @@
+'use strict';
+
+module.exports = {
+  async up(queryInterface) {
+    // برامج التأهيل
+    const rehabilitationPrograms = [
+      {
+        club_id: 1,
+        player_id: 9,
+        injury_id: 5,
+        program_name: 'تأهيل تمزق العضلة الخلفية',
+        phase: 3,
+        phase_label: 'المرحلة الثالثة - التعزيز',
+        progress_pct: 75,
+        start_date: '2024-02-10',
+        expected_end_date: '2024-03-15',
+        actual_end_date: null,
+        therapist_id: 3,
+        status: 'active',
+        goals: 'استعادة القوة الكاملة والمرونة',
+        exercises_description: 'تمارين تقوية متقدمة + تمارين رشاقة',
+        notes: 'تقدم جيد جداً',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        club_id: 1,
+        player_id: 17,
+        injury_id: 6,
+        program_name: 'تأهيل التهاب الأوتار',
+        phase: 4,
+        phase_label: 'المرحلة الرابعة - العودة للتدريب',
+        progress_pct: 90,
+        start_date: '2024-02-25',
+        expected_end_date: '2024-03-12',
+        actual_end_date: '2024-03-09',
+        therapist_id: 3,
+        status: 'completed',
+        goals: 'العودة للتدريب الكامل',
+        exercises_description: 'تمارين رياضية وظيفية + تمارين توازن',
+        notes: 'تم الإنجاز بنجاح',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        club_id: 1,
+        player_id: 26,
+        injury_id: 4,
+        program_name: 'تأهيل الشد العضلي',
+        phase: 1,
+        phase_label: 'المرحلة الأولى - الحماية',
+        progress_pct: 25,
+        start_date: '2024-03-20',
+        expected_end_date: '2024-03-27',
+        actual_end_date: null,
+        therapist_id: 3,
+        status: 'active',
+        goals: 'شفاء كامل من الشد العضلي',
+        exercises_description: 'راحة + تمدد خفيف + تدليك',
+        notes: 'إصابة بسيطة',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+    ];
+
+    await queryInterface.bulkInsert('rehabilitation_programs', rehabilitationPrograms);
+
+    // جلسات التأهيل
+    const rehabSessions = [
+      // جلسات برنامج اللاعب #9 (حمد اليامي)
+      {
+        club_id: 1,
+        program_id: 1,
+        player_id: 9,
+        therapist_id: 3,
+        session_date: '2024-02-10',
+        duration_minutes: 45,
+        session_type: 'تقييم أولي',
+        exercises_done: 'تقييم شامل للإصابة',
+        pain_level: 5,
+        progress_notes: 'بدء البرنامج',
+        attendance: 'attended',
+        created_at: new Date(),
+      },
+      {
+        club_id: 1,
+        program_id: 1,
+        player_id: 9,
+        therapist_id: 3,
+        session_date: '2024-02-13',
+        duration_minutes: 60,
+        session_type: 'علاج طبيعي',
+        exercises_done: 'تدليك + تبريد + تمدد',
+        pain_level: 4,
+        progress_notes: 'تحسن ملحوظ',
+        attendance: 'attended',
+        created_at: new Date(),
+      },
+      {
+        club_id: 1,
+        program_id: 1,
+        player_id: 9,
+        therapist_id: 3,
+        session_date: '2024-02-20',
+        duration_minutes: 60,
+        session_type: 'تعزيز',
+        exercises_done: 'تمارين تقوية خفيفة + تمارين مرونة',
+        pain_level: 2,
+        progress_notes: 'تقدم جيد',
+        attendance: 'attended',
+        created_at: new Date(),
+      },
+      {
+        club_id: 1,
+        program_id: 1,
+        player_id: 9,
+        therapist_id: 3,
+        session_date: '2024-03-05',
+        duration_minutes: 60,
+        session_type: 'تعزيز متقدم',
+        exercises_done: 'تمارين تقوية متقدمة + تمارين سرعة',
+        pain_level: 0,
+        progress_notes: 'تعافي ممتاز',
+        attendance: 'attended',
+        created_at: new Date(),
+      },
+      {
+        club_id: 1,
+        program_id: 1,
+        player_id: 9,
+        therapist_id: 3,
+        session_date: '2024-03-12',
+        duration_minutes: 45,
+        session_type: 'تقييم نهائي',
+        exercises_done: 'اختبارات قوة ومرونة',
+        pain_level: 0,
+        progress_notes: 'جاهز للعودة للتدريب',
+        attendance: 'attended',
+        created_at: new Date(),
+      },
+    ];
+
+    await queryInterface.bulkInsert('rehab_sessions', rehabSessions);
+  },
+
+  async down(queryInterface) {
+    await queryInterface.bulkDelete('rehab_sessions', { club_id: 1 });
+    await queryInterface.bulkDelete('rehabilitation_programs', { club_id: 1 });
+  },
+};
