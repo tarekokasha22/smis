@@ -27,9 +27,12 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT || '3306'),
+    port: parseInt(process.env.DB_PORT || '4000'),
     dialect: 'mysql',
     logging: false,
+    dialectOptions: {
+      ssl: { rejectUnauthorized: true },
+    },
     define: {
       timestamps: true,
       underscored: true,
@@ -37,8 +40,8 @@ module.exports = {
       collate: 'utf8mb4_unicode_ci',
     },
     pool: {
-      max: 20,
-      min: 5,
+      max: 5,
+      min: 0,
       acquire: 30000,
       idle: 10000,
     },
