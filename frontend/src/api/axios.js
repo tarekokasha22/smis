@@ -35,7 +35,6 @@ api.interceptors.response.use(
       try {
         const refreshToken = useAuthStore.getState().refreshToken;
         if (!refreshToken) {
-          useAuthStore.getState().logout();
           return Promise.reject(error);
         }
 

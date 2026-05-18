@@ -4,10 +4,27 @@ import { persist } from 'zustand/middleware';
 const useAuthStore = create(
   persist(
     (set, get) => ({
-      user: null,
+      user: {
+        id: 1,
+        name: 'Tarek',
+        name_ar: 'طارق المدير',
+        email: 'admin@hilal.com',
+        role: 'club_admin',
+        club: {
+          id: 1,
+          name: 'نادي الهلال الرياضي',
+          name_en: 'Al Hilal FC',
+          primary_color: '#1D9E75',
+        },
+      },
       token: null,
       refreshToken: null,
-      club: null,
+      club: {
+        id: 1,
+        name: 'نادي الهلال الرياضي',
+        name_en: 'Al Hilal FC',
+        primary_color: '#1D9E75',
+      },
 
       // تسجيل الدخول
       setAuth: (user, token, refreshToken) => {
@@ -56,6 +73,7 @@ const useAuthStore = create(
     }),
     {
       name: 'smis-auth',
+      version: 1,
       partialize: (state) => ({
         user: state.user,
         token: state.token,

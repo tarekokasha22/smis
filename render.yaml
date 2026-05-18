@@ -3,7 +3,7 @@ services:
     name: smis-backend
     env: node
     rootDir: backend
-    buildCommand: npm install
+    buildCommand: npm install && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all
     startCommand: npm start
     envVars:
       - key: NODE_ENV

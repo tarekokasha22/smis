@@ -106,7 +106,7 @@ export default function Topbar() {
               })()}
               </div>
               <div className="hidden md:block text-right">
-                <p className="text-sm font-semibold text-gray-900 leading-none">{user?.name}</p>
+                <p className="text-sm font-semibold text-gray-900 leading-none">{locale === 'ar' ? (user?.name_ar || user?.name) : user?.name}</p>
                 <p className="text-[11px] text-gray-400 leading-tight mt-0.5">{getRoleLabel(user?.role)}</p>
               </div>
               <ChevronDown className={`w-3.5 h-3.5 text-gray-400 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
@@ -126,7 +126,7 @@ export default function Topbar() {
                   })()}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm font-bold text-gray-900 truncate">{user?.name}</p>
+                      <p className="text-sm font-bold text-gray-900 truncate">{locale === 'ar' ? (user?.name_ar || user?.name) : user?.name}</p>
                       <p className="text-xs text-gray-500 truncate">{user?.email}</p>
                     </div>
                   </div>
