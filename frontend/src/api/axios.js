@@ -25,7 +25,15 @@ api.interceptors.request.use(
 
 // معالجة الاستجابات وتجديد التوكن
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Vercel's SPA catch-all rewrite returns index.html (string) for API paths
+    // when no backend is configured — detect and swap in mock data
+    if (typeof response.data === 'string') {
+      const mock = getMockForUrl(response.config?.url);
+      if (mock) return { ...response, data: mock };
+    }
+    return response;
+  },
   async (error) => {
     const originalRequest = error.config;
 
