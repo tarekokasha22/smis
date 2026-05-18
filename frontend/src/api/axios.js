@@ -1,5 +1,6 @@
 import axios from 'axios';
 import useAuthStore from '../store/authStore';
+import { getMockForUrl } from './mockData';
 
 const BASE = import.meta.env.VITE_API_URL;
 
@@ -54,6 +55,13 @@ api.interceptors.response.use(
         useAuthStore.getState().logout();
         return Promise.reject(refreshError);
       }
+    }
+
+    // Fall back to mock data when backend is unreachable
+    const method = error.config?.method?.toLowerCase();
+    if (method === 'get' || method === undefined) {
+      const mock = getMockForUrl(error.config?.url);
+      if (mock) return Promise.resolve({ data: mock });
     }
 
     return Promise.reject(error);
