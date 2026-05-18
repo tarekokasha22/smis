@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
 const getInitialState = () => ({
-  locale: localStorage.getItem('smis-locale') || 'ar',
-  dir: localStorage.getItem('smis-dir') || 'rtl',
+  locale: localStorage.getItem('smis-locale') || 'en',
+  dir: localStorage.getItem('smis-dir') || 'ltr',
 });
 
 const useLanguageStore = create((set) => ({
@@ -19,7 +19,7 @@ const useLanguageStore = create((set) => ({
   },
 
   toggleLanguage: () => {
-    const current = localStorage.getItem('smis-locale') || 'ar';
+    const current = localStorage.getItem('smis-locale') || 'en';
     const newLocale = current === 'ar' ? 'en' : 'ar';
     const newDir = newLocale === 'en' ? 'ltr' : 'rtl';
     localStorage.setItem('smis-locale', newLocale);

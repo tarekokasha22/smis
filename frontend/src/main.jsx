@@ -11,8 +11,8 @@ import 'dayjs/locale/en';
 import App from './App';
 import './index.css';
 
-const storedLocale = localStorage.getItem('smis-locale') || 'ar';
-const storedDir = localStorage.getItem('smis-dir') || 'rtl';
+const storedLocale = localStorage.getItem('smis-locale') || 'en';
+const storedDir = localStorage.getItem('smis-dir') || 'ltr';
 document.documentElement.lang = storedLocale;
 document.documentElement.dir = storedDir;
 
