@@ -2,40 +2,48 @@
 
 module.exports = {
   async up(queryInterface) {
-    // إنشاء سجلات مؤشرات حيوية لآخر 30 يوم لعدد من اللاعبين
+    // Player IDs (from demo-players seeder):
+    // 1=Jordan Pickford, 4=Trent Alexander-Arnold, 5=Kyle Walker, 9=Ben White,
+    // 12=Declan Rice, 14=Jude Bellingham, 15=Phil Foden, 16=Jack Grealish,
+    // 18=Bukayo Saka, 19=Harry Kane
+    // Recorded by user_id: 2 = Dr. James Harrison
+
     const vitals = [];
-    const players = [1, 2, 4, 5, 10, 11, 12, 18, 19, 20]; // 10 لاعبين
-    const baseHeartRates = [65, 68, 72, 70, 75, 68, 74, 69, 71, 73];
-    const baseWeights = [82, 80, 70, 88, 74, 73, 72, 76, 75, 84];
+    const playerIds     = [1,   4,   5,   9,   12,  14,  15,  16,  18,  19];
+    const baseHeartRates= [63,  67,  66,  65,  65,  62,  67,  65,  66,  64];
+    const baseWeights   = [73,  79,  78,  80,  82,  81,  73,  76,  76,  89];
+    const heights       = [185, 180, 182, 183, 185, 186, 171, 180, 178, 188];
 
     for (let day = 0; day < 30; day++) {
       const date = new Date();
       date.setDate(date.getDate() - day);
 
-      players.forEach((playerId, index) => {
-        // تغييرات طفيفة في القراءات
-        const hrVariation = Math.floor(Math.random() * 8) - 4;
+      playerIds.forEach((playerId, index) => {
+        const hrVariation     = Math.floor(Math.random() * 8) - 4;
         const weightVariation = (Math.random() * 0.6) - 0.3;
-        const tempVariation = (Math.random() * 0.4) - 0.2;
+        const tempVariation   = (Math.random() * 0.4) - 0.2;
+        const hr              = baseHeartRates[index] + hrVariation;
+        const wt              = Math.round((baseWeights[index] + weightVariation) * 10) / 10;
+        const ht              = heights[index];
 
         vitals.push({
           club_id: 1,
           player_id: playerId,
           recorded_by: 2,
           recorded_at: date,
-          heart_rate: baseHeartRates[index] + hrVariation,
-          blood_pressure_systolic: 115 + Math.floor(Math.random() * 15),
-          blood_pressure_diastolic: 75 + Math.floor(Math.random() * 10),
-          temperature: 36.5 + tempVariation,
+          heart_rate: hr,
+          blood_pressure_systolic:  115 + Math.floor(Math.random() * 15),
+          blood_pressure_diastolic:  74 + Math.floor(Math.random() * 10),
+          temperature: Math.round((36.5 + tempVariation) * 10) / 10,
           spo2: 97 + Math.floor(Math.random() * 3),
-          weight: baseWeights[index] + weightVariation,
-          height: [188, 185, 175, 192, 180, 177, 179, 182, 181, 187][index],
-          bmi: 0,
-          resting_hr: baseHeartRates[index] - 5 + hrVariation,
-          hrv: 45 + Math.floor(Math.random() * 20),
-          sleep_hours: 7 + Math.random() * 2,
+          weight: wt,
+          height: ht,
+          bmi: Math.round((wt / ((ht / 100) ** 2)) * 10) / 10,
+          resting_hr: hr - 5,
+          hrv: 45 + Math.floor(Math.random() * 30),
+          sleep_hours: Math.round((7 + Math.random() * 2) * 10) / 10,
           fatigue_level: Math.floor(Math.random() * 5) + 1,
-          hydration_status: ['good', 'fair', 'excellent'][Math.floor(Math.random() * 3)],
+          hydration_status: ['excellent', 'good', 'good', 'fair'][Math.floor(Math.random() * 4)],
           notes: '',
           created_at: date,
         });
