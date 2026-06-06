@@ -6,14 +6,14 @@ const useAuthStore = create(
     (set, get) => ({
       user: {
         id: 1,
-        name: 'Tarek',
-        name_ar: 'طارق المدير',
-        email: 'admin@hilal.com',
+        name: 'James Wilson',
+        name_ar: 'James Wilson',
+        email: 'admin@elitefc.com',
         role: 'club_admin',
         club: {
           id: 1,
-          name: 'نادي الهلال الرياضي',
-          name_en: 'Al Hilal FC',
+          name: 'Elite FC',
+          name_en: 'Elite FC',
           primary_color: '#1D9E75',
         },
       },
@@ -21,8 +21,8 @@ const useAuthStore = create(
       refreshToken: null,
       club: {
         id: 1,
-        name: 'نادي الهلال الرياضي',
-        name_en: 'Al Hilal FC',
+        name: 'Elite FC',
+        name_en: 'Elite FC',
         primary_color: '#1D9E75',
       },
 
@@ -73,7 +73,7 @@ const useAuthStore = create(
     }),
     {
       name: 'smis-auth',
-      version: 1,
+      version: 2,
       partialize: (state) => ({
         user: state.user,
         token: state.token,

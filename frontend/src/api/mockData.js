@@ -800,6 +800,44 @@ const measurements = [
   },
 ];
 
+// ── Audit Logs ────────────────────────────────────────────────────────────
+
+const auditLogs = [
+  { id: 1, user: { name: 'James Wilson' }, action: 'CREATE', entity_type: 'Player', entity_id: 22, description: 'Added player Ivan Toney to the squad', ip_address: '192.168.1.1', created_at: daysAgo(1) },
+  { id: 2, user: { name: 'Dr. James Harrison' }, action: 'CREATE', entity_type: 'Injury', entity_id: 3, description: 'Recorded ankle sprain for Harry Kane', ip_address: '192.168.1.2', created_at: daysAgo(2) },
+  { id: 3, user: { name: 'Sarah Mitchell' }, action: 'UPDATE', entity_type: 'Rehabilitation', entity_id: 2, description: 'Updated rehabilitation progress for John Stones to 70%', ip_address: '192.168.1.3', created_at: daysAgo(3) },
+  { id: 4, user: { name: 'Dr. James Harrison' }, action: 'CREATE', entity_type: 'Vital', entity_id: 10, description: 'Recorded vitals for Jordan Pickford', ip_address: '192.168.1.2', created_at: daysAgo(4) },
+  { id: 5, user: { name: 'James Wilson' }, action: 'UPDATE', entity_type: 'Player', entity_id: 8, description: 'Updated status of Luke Shaw to suspended', ip_address: '192.168.1.1', created_at: daysAgo(5) },
+  { id: 6, user: { name: 'Dr. James Harrison' }, action: 'CREATE', entity_type: 'Appointment', entity_id: 7, description: 'Scheduled physiotherapy session for Phil Foden', ip_address: '192.168.1.2', created_at: daysAgo(6) },
+  { id: 7, user: { name: 'Sarah Mitchell' }, action: 'CREATE', entity_type: 'Rehabilitation', entity_id: 3, description: 'Started calf rehabilitation program for Phil Foden', ip_address: '192.168.1.3', created_at: daysAgo(7) },
+  { id: 8, user: { name: 'David Mills' }, action: 'CREATE', entity_type: 'Performance', entity_id: 5, description: 'Recorded performance evaluation for Declan Rice', ip_address: '192.168.1.4', created_at: daysAgo(8) },
+  { id: 9, user: { name: 'James Wilson' }, action: 'UPDATE', entity_type: 'Equipment', entity_id: 3, description: 'Flagged Motion Analysis System as needs_maintenance', ip_address: '192.168.1.1', created_at: daysAgo(10) },
+  { id: 10, user: { name: 'Dr. James Harrison' }, action: 'CREATE', entity_type: 'Injury', entity_id: 2, description: 'Recorded ACL knee injury for Reece James', ip_address: '192.168.1.2', created_at: daysAgo(21) },
+];
+
+const auditMeta = {
+  users: users,
+  entityTypes: ['Player', 'Injury', 'Vital', 'Rehabilitation', 'Equipment', 'Supply', 'Appointment', 'Performance', 'User', 'BodyMeasurement'],
+  actionTypes: ['CREATE', 'UPDATE', 'DELETE'],
+};
+
+// ── Files ─────────────────────────────────────────────────────────────────
+
+const files = [
+  { id: 1, player_id: 6, player: { name: 'John Stones', jersey_number: 5 }, file_name: 'hamstring_mri_stones.pdf', file_type: 'mri', file_size: 2500000, mime_type: 'application/pdf', description: 'MRI scan of left hamstring — grade II strain', uploaded_by: { name: 'Dr. James Harrison' }, is_confidential: false, created_at: daysAgo(7) },
+  { id: 2, player_id: 10, player: { name: 'Reece James', jersey_number: 24 }, file_name: 'acl_xray_james.pdf', file_type: 'xray', file_size: 1800000, mime_type: 'application/pdf', description: 'X-ray of right knee — ACL assessment', uploaded_by: { name: 'Dr. James Harrison' }, is_confidential: false, created_at: daysAgo(20) },
+  { id: 3, player_id: 10, player: { name: 'Reece James', jersey_number: 24 }, file_name: 'acl_mri_full_james.pdf', file_type: 'mri', file_size: 3200000, mime_type: 'application/pdf', description: 'Full knee MRI — ACL partial tear confirmed', uploaded_by: { name: 'Dr. James Harrison' }, is_confidential: true, created_at: daysAgo(19) },
+  { id: 4, player_id: 19, player: { name: 'Harry Kane', jersey_number: 9 }, file_name: 'ankle_scan_kane.pdf', file_type: 'scan', file_size: 1200000, mime_type: 'application/pdf', description: 'Ultrasound scan of right ankle — mild sprain', uploaded_by: { name: 'Dr. James Harrison' }, is_confidential: false, created_at: daysAgo(4) },
+  { id: 5, player_id: 15, player: { name: 'Phil Foden', jersey_number: 47 }, file_name: 'calf_physio_report.pdf', file_type: 'report', file_size: 450000, mime_type: 'application/pdf', description: 'Physiotherapy progress report — calf rehabilitation phase 4', uploaded_by: { name: 'Sarah Mitchell' }, is_confidential: false, created_at: daysAgo(10) },
+  { id: 6, player_id: 14, player: { name: 'Jude Bellingham', jersey_number: 22 }, file_name: 'lab_results_bellingham.pdf', file_type: 'lab', file_size: 320000, mime_type: 'application/pdf', description: 'Blood work and metabolic panel results', uploaded_by: { name: 'Dr. James Harrison' }, is_confidential: true, created_at: daysAgo(14) },
+];
+
+const filesStats = {
+  total: 6,
+  totalSize: 9470000,
+  byType: { mri: 2, xray: 1, scan: 1, report: 1, lab: 1 },
+};
+
 // ── URL → mock response map ───────────────────────────────────────────────
 
 export const MOCK_RESPONSES = {
@@ -832,10 +870,101 @@ export const MOCK_RESPONSES = {
   '/notifications':                { success: true, data: notifications, meta: { total: 5 } },
   '/statistics/analytics':         { success: true, data: statisticsAnalytics },
   '/measurements':                 { success: true, data: measurements, meta: { total: 5 } },
+  '/audit/meta':                   { success: true, data: auditMeta },
+  '/audit':                        { success: true, data: auditLogs, meta: { total: 10, page: 1, limit: 20, totalPages: 1 } },
+  '/files/stats':                  { success: true, data: filesStats },
+  '/files':                        { success: true, data: files, meta: { total: 6 } },
 };
+
+function getDynamicMock(path) {
+  // /players/:id/timeline
+  if (/^\/players\/\d+\/timeline$/.test(path)) {
+    return { success: true, data: [], meta: { total: 0 } };
+  }
+
+  // /vitals/player/:id
+  const vitalsPlayerMatch = path.match(/^\/vitals\/player\/(\d+)$/);
+  if (vitalsPlayerMatch) {
+    const id = parseInt(vitalsPlayerMatch[1]);
+    const playerVitals = vitals.filter((v) => v.player_id === id);
+    return { success: true, data: { vitals: playerVitals } };
+  }
+
+  // /players/:id
+  const playerMatch = path.match(/^\/players\/(\d+)$/);
+  if (playerMatch) {
+    const id = parseInt(playerMatch[1]);
+    const player = players.find((p) => p.id === id) || players[0];
+    return {
+      success: true,
+      data: {
+        ...player,
+        blood_type: 'O+',
+        emergency_contact_name: 'Family Member',
+        emergency_contact_phone: '07700900000',
+        contract_start: '2022-07-01',
+        contract_end: '2025-06-30',
+        notes: '',
+      },
+    };
+  }
+
+  // /rehabilitation/:id
+  const rehabMatch = path.match(/^\/rehabilitation\/(\d+)$/);
+  if (rehabMatch) {
+    const id = parseInt(rehabMatch[1]);
+    const rehab = rehabilitation.find((r) => r.id === id) || rehabilitation[0];
+    return { success: true, data: rehab };
+  }
+
+  // /injuries/:id
+  const injuryMatch = path.match(/^\/injuries\/(\d+)$/);
+  if (injuryMatch) {
+    const id = parseInt(injuryMatch[1]);
+    const injury = injuries.find((i) => i.id === id) || injuries[0];
+    return { success: true, data: injury };
+  }
+
+  // /appointments/:id
+  const apptMatch = path.match(/^\/appointments\/(\d+)$/);
+  if (apptMatch) {
+    const id = parseInt(apptMatch[1]);
+    const appt = appointments.find((a) => a.id === id) || appointments[0];
+    return { success: true, data: appt };
+  }
+
+  // /performance/:id
+  const perfMatch = path.match(/^\/performance\/(\d+)$/);
+  if (perfMatch) {
+    const id = parseInt(perfMatch[1]);
+    const perf = performance.find((p) => p.id === id) || performance[0];
+    return { success: true, data: perf };
+  }
+
+  // /vitals/:id
+  const vitalsMatch = path.match(/^\/vitals\/(\d+)$/);
+  if (vitalsMatch) {
+    const id = parseInt(vitalsMatch[1]);
+    const vital = vitals.find((v) => v.id === id) || vitals[0];
+    return { success: true, data: vital };
+  }
+
+  // /equipment/:id
+  const equipMatch = path.match(/^\/equipment\/(\d+)$/);
+  if (equipMatch) {
+    const id = parseInt(equipMatch[1]);
+    const eq = equipment.find((e) => e.id === id) || equipment[0];
+    return { success: true, data: eq };
+  }
+
+  return null;
+}
 
 export function getMockForUrl(url = '') {
   if (!url) return null;
-  const key = Object.keys(MOCK_RESPONSES).find((k) => url.includes(k));
-  return key ? MOCK_RESPONSES[key] : null;
+  const path = url.split('?')[0];
+  // Exact match first (handles all static routes including /players/meta, etc.)
+  if (MOCK_RESPONSES[path]) return MOCK_RESPONSES[path];
+  // Dynamic routes with URL parameters
+  return getDynamicMock(path);
 }

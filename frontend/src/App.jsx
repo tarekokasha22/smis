@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     if (!token) {
-      authAPI.login({ email: 'admin@hilal.com', password: 'Admin@1234' })
+      authAPI.login({ email: 'admin@elitefc.com', password: 'Admin@1234' })
         .then(res => {
           if (res.data.success) {
             const { user, accessToken, refreshToken } = res.data.data;
