@@ -18,7 +18,7 @@
 
 <br/>
 
-[Live Demo]([https://smis-app.vercel.app](https://sportix-smis.vercel.app/)) · [GitHub](https://github.com/tarekokasha22/smis) · [Report Bug](https://github.com/tarekokasha22/smis/issues) · [Request Feature](https://github.com/tarekokasha22/smis/issues)
+[Live Demo](https://sportix-smis.vercel.app/) · [GitHub](https://github.com/tarekokasha22/smis) · [Report Bug](https://github.com/tarekokasha22/smis/issues) · [Request Feature](https://github.com/tarekokasha22/smis/issues)
 
 </div>
 
