@@ -186,7 +186,7 @@ The live demo is pre-seeded with the following accounts — each with a distinct
 | Coach | coach@hilal.com | Coach@1234 | Player profiles, performance |
 | Manager | manager@hilal.com | Manager@1234 | Reports, staff, appointments |
 
-> **Try the live demo:** [https://smis-app.vercel.app](https://smis-app.vercel.app)
+> **Try the live demo:** [(https://smis-app.vercel.app](https://smis-app.vercel.app)
 
 ---
 
