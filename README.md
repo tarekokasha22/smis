@@ -248,8 +248,8 @@ Both the frontend and backend are deployed on **Vercel** as serverless functions
 
 | Service | Provider | URL |
 |---|---|---|
-| Frontend | Vercel | https://smis-app.vercel.app |
-| Backend API | Vercel (Serverless) | https://smis-app.vercel.app/api |
+| Frontend | Vercel | https://sportix-smis.vercel.app |
+| Backend API | Vercel (Serverless) | https://sportix-smis.vercel.app/api |
 | Database | TiDB Cloud | Managed MySQL |
 
 **To deploy your own instance:**
