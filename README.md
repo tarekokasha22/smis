@@ -24,13 +24,6 @@
 
 ---
 
-## Screenshots
-
-> Screenshots coming soon.
-
-![SMIS Dashboard Placeholder](https://via.placeholder.com/1200x600/1e293b/38bdf8?text=SMIS+Dashboard+%E2%80%94+Sports+Medical+Information+System)
-
----
 
 ## Features
 
