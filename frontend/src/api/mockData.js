@@ -451,6 +451,50 @@ const performanceTeamAverage = {
   overall_score_pct: 83,
 };
 
+// Historical performance records per player (for PlayerDetail PerformanceTab)
+const performanceHistory = {
+  19: [ // Harry Kane
+    { id: 101, player_id: 19, player: { name: 'Harry Kane', jersey_number: 9 }, evaluation_date: daysAgo(7).slice(0, 10), vo2_max: 58.2, max_speed_kmh: 32.8, strength_pct: 88, endurance_pct: 90, flexibility_pct: 74, overall_score_pct: 87, physical_readiness_pct: 91, mental_readiness_pct: 95, trend: 'up', recommendations: 'Maintain current load, focus on flexibility work' },
+    { id: 102, player_id: 19, player: { name: 'Harry Kane', jersey_number: 9 }, evaluation_date: daysAgo(30).slice(0, 10), vo2_max: 57.1, max_speed_kmh: 32.1, strength_pct: 85, endurance_pct: 88, flexibility_pct: 72, overall_score_pct: 84, physical_readiness_pct: 88, mental_readiness_pct: 92, trend: 'stable', recommendations: null },
+    { id: 103, player_id: 19, player: { name: 'Harry Kane', jersey_number: 9 }, evaluation_date: daysAgo(60).slice(0, 10), vo2_max: 56.4, max_speed_kmh: 31.8, strength_pct: 83, endurance_pct: 86, flexibility_pct: 71, overall_score_pct: 82, physical_readiness_pct: 85, mental_readiness_pct: 90, trend: 'up', recommendations: null },
+  ],
+  14: [ // Jude Bellingham
+    { id: 104, player_id: 14, player: { name: 'Jude Bellingham', jersey_number: 22 }, evaluation_date: daysAgo(7).slice(0, 10), vo2_max: 60.1, max_speed_kmh: 34.2, strength_pct: 83, endurance_pct: 88, flexibility_pct: 79, overall_score_pct: 90, physical_readiness_pct: 94, mental_readiness_pct: 97, trend: 'up', recommendations: 'Monitor workload during busy fixture period' },
+    { id: 105, player_id: 14, player: { name: 'Jude Bellingham', jersey_number: 22 }, evaluation_date: daysAgo(30).slice(0, 10), vo2_max: 58.9, max_speed_kmh: 33.8, strength_pct: 80, endurance_pct: 85, flexibility_pct: 77, overall_score_pct: 86, physical_readiness_pct: 90, mental_readiness_pct: 94, trend: 'up', recommendations: null },
+  ],
+  12: [ // Declan Rice
+    { id: 106, player_id: 12, player: { name: 'Declan Rice', jersey_number: 41 }, evaluation_date: daysAgo(7).slice(0, 10), vo2_max: 59.3, max_speed_kmh: 31.4, strength_pct: 89, endurance_pct: 92, flexibility_pct: 72, overall_score_pct: 88, physical_readiness_pct: 93, mental_readiness_pct: 91, trend: 'up', recommendations: 'Increase flexibility training' },
+    { id: 107, player_id: 12, player: { name: 'Declan Rice', jersey_number: 41 }, evaluation_date: daysAgo(30).slice(0, 10), vo2_max: 58.1, max_speed_kmh: 30.9, strength_pct: 87, endurance_pct: 90, flexibility_pct: 70, overall_score_pct: 86, physical_readiness_pct: 91, mental_readiness_pct: 89, trend: 'stable', recommendations: null },
+  ],
+  15: [ // Phil Foden
+    { id: 108, player_id: 15, player: { name: 'Phil Foden', jersey_number: 47 }, evaluation_date: daysAgo(14).slice(0, 10), vo2_max: 55.4, max_speed_kmh: 31.9, strength_pct: 75, endurance_pct: 80, flexibility_pct: 82, overall_score_pct: 79, physical_readiness_pct: 72, mental_readiness_pct: 85, trend: 'down', recommendations: 'Gradual return to full training, reassess in one week' },
+    { id: 109, player_id: 15, player: { name: 'Phil Foden', jersey_number: 47 }, evaluation_date: daysAgo(45).slice(0, 10), vo2_max: 57.2, max_speed_kmh: 32.3, strength_pct: 79, endurance_pct: 83, flexibility_pct: 84, overall_score_pct: 83, physical_readiness_pct: 86, mental_readiness_pct: 88, trend: 'stable', recommendations: null },
+  ],
+};
+
+// Player medication/supply dispense transactions (for PlayerDetail MedicationsTab)
+const playerSupplyTransactions = {
+  6: [ // John Stones
+    { id: 1, supply: { name: 'Ibuprofen 400mg' }, transaction_type: 'dispense', quantity_change: -2, remaining_after: 48, notes: 'Post-injury pain management', transaction_at: daysAgo(7) },
+    { id: 2, supply: { name: 'Sports Tape' }, transaction_type: 'dispense', quantity_change: -3, remaining_after: 47, notes: 'Ankle/knee strapping before physio', transaction_at: daysAgo(5) },
+    { id: 3, supply: { name: 'Ice Packs' }, transaction_type: 'dispense', quantity_change: -2, remaining_after: 28, notes: 'Post-treatment cryotherapy', transaction_at: daysAgo(3) },
+  ],
+  10: [ // Reece James
+    { id: 4, supply: { name: 'Naproxen 500mg' }, transaction_type: 'dispense', quantity_change: -2, remaining_after: 38, notes: 'Anti-inflammatory for ACL recovery', transaction_at: daysAgo(21) },
+    { id: 5, supply: { name: 'Sports Tape' }, transaction_type: 'dispense', quantity_change: -4, remaining_after: 46, notes: 'Knee support strapping', transaction_at: daysAgo(14) },
+    { id: 6, supply: { name: 'Paracetamol 500mg' }, transaction_type: 'dispense', quantity_change: -4, remaining_after: 96, notes: 'Pain management during rehab', transaction_at: daysAgo(10) },
+  ],
+  19: [ // Harry Kane
+    { id: 7, supply: { name: 'Ibuprofen 400mg' }, transaction_type: 'dispense', quantity_change: -2, remaining_after: 46, notes: 'Ankle sprain management', transaction_at: daysAgo(4) },
+    { id: 8, supply: { name: 'Ice Packs' }, transaction_type: 'dispense', quantity_change: -1, remaining_after: 29, notes: 'Cryotherapy post-training', transaction_at: daysAgo(3) },
+  ],
+  15: [ // Phil Foden
+    { id: 9, supply: { name: 'Paracetamol 500mg' }, transaction_type: 'dispense', quantity_change: -4, remaining_after: 92, notes: 'Calf pain management', transaction_at: daysAgo(14) },
+    { id: 10, supply: { name: 'Sports Tape' }, transaction_type: 'dispense', quantity_change: -2, remaining_after: 48, notes: 'Calf compression support', transaction_at: daysAgo(12) },
+    { id: 11, supply: { name: 'Magnesium Supplement' }, transaction_type: 'dispense', quantity_change: -30, remaining_after: 270, notes: 'Monthly supplement allocation', transaction_at: daysAgo(7) },
+  ],
+};
+
 // ── Vitals ────────────────────────────────────────────────────────────────
 
 const vitals = [
@@ -534,6 +578,21 @@ const vitals = [
     resting_hr: 57, hrv: 76, sleep_hours: 8.0, fatigue_level: 2, hydration_status: 'excellent',
     notes: 'Excellent resting vitals',
   },
+  // Historical records — Harry Kane
+  { id: 11, player_id: 19, player: { name: 'Harry Kane', jersey_number: 9 }, recorded_by: 'Dr. James Harrison', recorded_at: daysAgo(8), heart_rate: 65, blood_pressure_systolic: 119, blood_pressure_diastolic: 77, temperature: 36.6, spo2: 99, weight: 89.0, height: 188, bmi: 25.2, fatigue_level: 3, notes: 'Pre-match check' },
+  { id: 12, player_id: 19, player: { name: 'Harry Kane', jersey_number: 9 }, recorded_by: 'Dr. James Harrison', recorded_at: daysAgo(15), heart_rate: 66, blood_pressure_systolic: 120, blood_pressure_diastolic: 78, temperature: 36.7, spo2: 98, weight: 89.5, height: 188, bmi: 25.3, fatigue_level: 4, notes: 'Post-match fatigue noted' },
+  { id: 13, player_id: 19, player: { name: 'Harry Kane', jersey_number: 9 }, recorded_by: 'Sarah Mitchell', recorded_at: daysAgo(22), heart_rate: 63, blood_pressure_systolic: 117, blood_pressure_diastolic: 75, temperature: 36.5, spo2: 99, weight: 88.8, height: 188, bmi: 25.1, fatigue_level: 2, notes: 'Good recovery week' },
+  // Historical records — Jude Bellingham
+  { id: 14, player_id: 14, player: { name: 'Jude Bellingham', jersey_number: 22 }, recorded_by: 'Dr. James Harrison', recorded_at: daysAgo(8), heart_rate: 61, blood_pressure_systolic: 114, blood_pressure_diastolic: 73, temperature: 36.5, spo2: 99, weight: 81.2, height: 186, bmi: 23.5, fatigue_level: 2, notes: 'Excellent recovery' },
+  { id: 15, player_id: 14, player: { name: 'Jude Bellingham', jersey_number: 22 }, recorded_by: 'Dr. James Harrison', recorded_at: daysAgo(15), heart_rate: 63, blood_pressure_systolic: 116, blood_pressure_diastolic: 74, temperature: 36.6, spo2: 98, weight: 81.0, height: 186, bmi: 23.4, fatigue_level: 3, notes: 'Slight fatigue after intensive training week' },
+  // Historical records — Reece James
+  { id: 16, player_id: 10, player: { name: 'Reece James', jersey_number: 24 }, recorded_by: 'Dr. Sarah Thompson', recorded_at: daysAgo(10), heart_rate: 71, blood_pressure_systolic: 121, blood_pressure_diastolic: 79, temperature: 36.9, spo2: 97, weight: 79.2, height: 180, bmi: 24.4, fatigue_level: 6, notes: 'Elevated markers post-injury — monitoring closely' },
+  { id: 17, player_id: 10, player: { name: 'Reece James', jersey_number: 24 }, recorded_by: 'Dr. Sarah Thompson', recorded_at: daysAgo(17), heart_rate: 73, blood_pressure_systolic: 124, blood_pressure_diastolic: 81, temperature: 37.1, spo2: 96, weight: 79.5, height: 180, bmi: 24.5, fatigue_level: 7, notes: 'Day 4 post ACL injury — pain managed' },
+  // Historical records — John Stones
+  { id: 18, player_id: 6, player: { name: 'John Stones', jersey_number: 5 }, recorded_by: 'Dr. James Harrison', recorded_at: daysAgo(9), heart_rate: 72, blood_pressure_systolic: 123, blood_pressure_diastolic: 81, temperature: 36.9, spo2: 97, weight: 82.2, height: 188, bmi: 23.2, fatigue_level: 6, notes: 'Day 2 post hamstring injury' },
+  { id: 19, player_id: 6, player: { name: 'John Stones', jersey_number: 5 }, recorded_by: 'Dr. James Harrison', recorded_at: daysAgo(14), heart_rate: 68, blood_pressure_systolic: 120, blood_pressure_diastolic: 78, temperature: 36.7, spo2: 98, weight: 82.0, height: 188, bmi: 23.2, fatigue_level: 4, notes: 'Start of rehab phase' },
+  // Historical records — Declan Rice
+  { id: 20, player_id: 12, player: { name: 'Declan Rice', jersey_number: 41 }, recorded_by: 'Dr. James Harrison', recorded_at: daysAgo(9), heart_rate: 64, blood_pressure_systolic: 119, blood_pressure_diastolic: 77, temperature: 36.6, spo2: 99, weight: 82.1, height: 185, bmi: 23.9, fatigue_level: 3, notes: 'Consistent form' },
 ];
 
 const vitalsOverview = vitals;
@@ -1036,18 +1095,69 @@ export const MOCK_RESPONSES = {
   '/files/stats':                  { success: true, data: filesStats },
   '/files':                        { success: true, data: files, meta: { total: 6 } },
   // Reports endpoints
-  '/reports/players':              { success: true, data: players.map(p => ({ id: p.id, name: p.name, jersey_number: p.jersey_number })) },
-  '/reports/team-health':          { success: true, data: { healthIndex: 85, readyPlayers: 18, injuredPlayers: 4, totalPlayers: 22 } },
-  '/reports/injuries':             { success: true, data: injuries },
-  '/reports/rehabilitation':       { success: true, data: rehabilitation },
-  '/reports/vitals':               { success: true, data: vitals },
-  '/reports/appointments':         { success: true, data: appointments },
-  '/reports/performance':          { success: true, data: performance },
-  '/reports/equipment':            { success: true, data: equipment },
-  '/reports/supplies':             { success: true, data: equipmentSuppliesList },
-  '/reports/measurements':         { success: true, data: measurements },
-  // Settings
-  '/settings':                     { success: true, data: { clubName: 'Elite FC', timezone: 'UTC', language: 'ar', notificationsEnabled: true } },
+  '/reports/players':              { success: true, data: players.map(p => ({ id: p.id, name: p.name, number: p.jersey_number, position: p.position, status: p.status })) },
+  '/reports/team-health': {
+    success: true, data: {
+      summary: { totalPlayers: 22, ready: 18, injured: 4, suspended: 2, healthIndex: 85 },
+      players: players.map(p => ({ id: p.id, name: p.name, number: p.jersey_number, position: p.position, status: p.status })),
+      injuries: injuries.filter(i => i.status !== 'closed'),
+    }
+  },
+  '/reports/injuries': {
+    success: true, data: {
+      summary: {
+        total: 14, avgRecoveryDays: 24,
+        bySeverity: { mild: 5, moderate: 5, severe: 3, critical: 1 },
+      },
+      injuries: injuries.map(i => ({ ...i, player: { ...i.player, number: i.player.jersey_number } })),
+    }
+  },
+  '/reports/rehabilitation': {
+    success: true, data: {
+      summary: { total: 3, active: 3, completed: 9, paused: 0 },
+      programs: rehabilitation.map(r => ({
+        ...r,
+        player: { name: r.player.name, number: r.player.jersey_number },
+        sessionStats: { total: 18, attended: 16, missed: 1, cancelled: 1 },
+      })),
+    }
+  },
+  '/reports/vitals': {
+    success: true, data: {
+      summary: { total: 10, avgHeartRate: 65, avgSpO2: 98, abnormalCount: 1 },
+      vitals: vitals.map(v => ({ ...v, player: { name: v.player.name, number: v.player.jersey_number } })),
+    }
+  },
+  '/reports/appointments': {
+    success: true, data: {
+      summary: { total: 7, scheduled: 3, completed: 3, cancelled: 0, no_show: 1 },
+      appointments: appointments.map(a => ({ ...a, player: { name: a.player.name, number: a.player.jersey_number } })),
+    }
+  },
+  '/reports/performance': {
+    success: true, data: {
+      summary: { total: 6, avgOverallScore: 86, avgReadiness: 89, trendUp: 3, trendDown: 1 },
+      performances: performance.map(p => ({ ...p, player: { name: p.player.name, number: p.player.jersey_number } })),
+    }
+  },
+  '/reports/equipment': {
+    success: true, data: {
+      summary: { total: 5, excellent: 2, good: 2, needs_maintenance: 1, out_of_service: 0, maintenanceDueSoon: 2 },
+      equipment,
+    }
+  },
+  '/reports/supplies': {
+    success: true, data: {
+      summary: { total: 8, lowStock: 3, expiringSoon: 2, expired: 1 },
+      supplies: equipmentSuppliesList,
+    }
+  },
+  '/reports/measurements': { success: true, data: { summary: { total: 8 }, measurements } },
+  // Misc
+  '/injuries/stats':   { success: true, data: { total: 14, active: 4, recovering: 3, closed: 7, avgRecoveryDays: 24, recurrenceRate: 12 } },
+  '/injuries/doctors': { success: true, data: [{ id: 2, name: 'Dr. James Harrison' }, { id: 3, name: 'Dr. Sarah Thompson' }] },
+  '/measurements/stats': { success: true, data: { total: 8, avgBmi: 24.2, avgBodyFat: 10.9, avgMuscleMass: 40.4 } },
+  '/settings': { success: true, data: { clubName: 'Elite FC', timezone: 'UTC', language: 'ar', notificationsEnabled: true } },
 };
 
 function getDynamicMock(path) {
@@ -1062,6 +1172,33 @@ function getDynamicMock(path) {
     const id = parseInt(vitalsPlayerMatch[1]);
     const playerVitals = vitals.filter((v) => v.player_id === id);
     return { success: true, data: { vitals: playerVitals } };
+  }
+
+  // /equipment/supplies/:id/transactions  — dispense history
+  if (/^\/equipment\/supplies\/\d+\/transactions$/.test(path)) {
+    const supplyId = parseInt(path.split('/')[3]);
+    const supply = equipmentSuppliesList.find(s => s.id === supplyId) || equipmentSuppliesList[0];
+    return {
+      success: true,
+      data: [
+        { id: 1, supply_id: supplyId, supply: { name: supply.name }, transaction_type: 'dispense', quantity_change: -2, remaining_after: supply.total_quantity - supply.used_quantity + 4, notes: 'Dispensed for post-match treatment', transaction_at: daysAgo(3), performed_by: { name: 'Dr. James Harrison' } },
+        { id: 2, supply_id: supplyId, supply: { name: supply.name }, transaction_type: 'dispense', quantity_change: -1, remaining_after: supply.total_quantity - supply.used_quantity + 5, notes: 'Training session use', transaction_at: daysAgo(7), performed_by: { name: 'Sarah Mitchell' } },
+        { id: 3, supply_id: supplyId, supply: { name: supply.name }, transaction_type: 'restock', quantity_change: 10, remaining_after: supply.total_quantity - supply.used_quantity + 16, notes: 'Weekly restock order received', transaction_at: daysAgo(14), performed_by: { name: 'James Wilson' } },
+      ],
+      meta: { total: 3 },
+    };
+  }
+
+  // /equipment/:id/maintenance
+  if (/^\/equipment\/\d+\/maintenance$/.test(path)) {
+    return {
+      success: true,
+      data: [
+        { id: 1, performed_by: 'External Technician', maintenance_type: 'Calibration', notes: 'Annual calibration completed', performed_at: daysAgo(30), next_due: daysFromNow(60) },
+        { id: 2, performed_by: 'James Wilson', maintenance_type: 'Inspection', notes: 'Visual inspection — all clear', performed_at: daysAgo(90), next_due: daysFromNow(30) },
+      ],
+      meta: { total: 2 },
+    };
   }
 
   // /players/:id
@@ -1146,15 +1283,22 @@ function getDynamicMock(path) {
 
   // /equipment/:id/maintenance
   if (/^\/equipment\/\d+\/maintenance$/.test(path)) {
-    return { success: true, data: [], meta: { total: 0 } };
+    return {
+      success: true,
+      data: [
+        { id: 1, performed_by: 'External Technician', maintenance_type: 'Calibration', notes: 'Annual calibration completed', performed_at: daysAgo(30), next_due: daysFromNow(60) },
+        { id: 2, performed_by: 'James Wilson', maintenance_type: 'Inspection', notes: 'Visual inspection — all clear', performed_at: daysAgo(90), next_due: daysFromNow(30) },
+      ],
+      meta: { total: 2 },
+    };
   }
 
-  // /reports/player/:id
-  const reportPlayerMatch = path.match(/^\/reports\/player\/(\d+)$/);
-  if (reportPlayerMatch) {
-    const id = parseInt(reportPlayerMatch[1]);
-    const player = players.find((p) => p.id === id) || players[0];
-    return { success: true, data: { player, injuries: [], vitals: [], performance: [] } };
+  // /equipment/supplies/player/:id/transactions — MedicationsTab
+  const playerTxMatch = path.match(/^\/equipment\/supplies\/player\/(\d+)\/transactions$/);
+  if (playerTxMatch) {
+    const id = parseInt(playerTxMatch[1]);
+    const txs = playerSupplyTransactions[id] || playerSupplyTransactions[6];
+    return { success: true, data: txs, meta: { total: txs.length } };
   }
 
   // /measurements/player/:id
@@ -1162,15 +1306,66 @@ function getDynamicMock(path) {
   if (measPlayerMatch) {
     const id = parseInt(measPlayerMatch[1]);
     const playerMeasurements = measurements.filter((m) => m.player_id === id);
-    return { success: true, data: playerMeasurements };
+    return { success: true, data: playerMeasurements, meta: { total: playerMeasurements.length } };
+  }
+
+  // /measurements/:id
+  const measIdMatch = path.match(/^\/measurements\/(\d+)$/);
+  if (measIdMatch) {
+    const id = parseInt(measIdMatch[1]);
+    return { success: true, data: measurements.find(m => m.id === id) || measurements[0] };
+  }
+
+  // /performance/player/:id
+  const perfPlayerMatch = path.match(/^\/performance\/player\/(\d+)$/);
+  if (perfPlayerMatch) {
+    const id = parseInt(perfPlayerMatch[1]);
+    const result = performanceHistory[id] || performance.filter(p => p.player_id === id);
+    const final = result.length ? result : [performance[0]];
+    return { success: true, data: final, meta: { total: final.length } };
   }
 
   // /users/:id
   const userMatch = path.match(/^\/users\/(\d+)$/);
   if (userMatch) {
     const id = parseInt(userMatch[1]);
-    const user = users.find((u) => u.id === id) || users[0];
-    return { success: true, data: user };
+    return { success: true, data: users.find(u => u.id === id) || users[0] };
+  }
+
+  // /reports/player/:id — full medical record
+  const reportPlayerMatch = path.match(/^\/reports\/player\/(\d+)$/);
+  if (reportPlayerMatch) {
+    const id = parseInt(reportPlayerMatch[1]);
+    const player = players.find(p => p.id === id) || players[0];
+    const pi = injuries.filter(i => i.player_id === id);
+    const pv = vitals.filter(v => v.player_id === id);
+    const pr = rehabilitation.filter(r => r.player_id === id);
+    const pf = files.filter(f => f.player_id === id);
+    return {
+      success: true,
+      data: {
+        player: { ...player, number: player.jersey_number, blood_type: 'O+' },
+        injuries: pi, vitals: pv, rehabPrograms: pr, files: pf,
+        summary: {
+          totalInjuries: pi.length,
+          activeInjuries: pi.filter(i => i.status === 'active').length,
+          totalRehab: pr.length, totalFiles: pf.length,
+          latestVitals: pv[0] || null,
+        },
+      },
+    };
+  }
+
+  // /files/:id
+  const fileIdMatch = path.match(/^\/files\/(\d+)$/);
+  if (fileIdMatch) {
+    const id = parseInt(fileIdMatch[1]);
+    return { success: true, data: files.find(f => f.id === id) || files[0] };
+  }
+
+  // /notifications/:id (mark read)
+  if (/^\/notifications\/\d+$/.test(path)) {
+    return { success: true, data: { marked: true } };
   }
 
   return null;
