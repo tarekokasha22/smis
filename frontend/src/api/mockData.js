@@ -734,24 +734,117 @@ const statisticsAnalytics = {
   snapshot: {
     totalPlayers: 22,
     readyPlayers: 18,
-    injuredPlayers: 2,
+    injuredPlayers: 4,
+    rehabPlayers: 3,
     suspendedPlayers: 2,
     healthIndex: 85,
   },
   injuries: {
-    countInPeriod: 4,
+    countInPeriod: 14,
     recurrenceRate: 12,
     byType: [
-      { type: 'Hamstring Strain', count: 1 },
-      { type: 'ACL Knee Injury', count: 1 },
-      { type: 'Ankle Sprain', count: 1 },
-      { type: 'Calf Tightness', count: 1 },
+      { name: 'Hamstring Strain', key: 'hamstring_strain', value: 5 },
+      { name: 'Ankle Sprain', key: 'ankle_sprain', value: 4 },
+      { name: 'ACL Knee Injury', key: 'acl', value: 2 },
+      { name: 'Muscle Tear', key: 'muscle_tear', value: 2 },
+      { name: 'Fracture', key: 'fracture', value: 1 },
     ],
     byArea: [
-      { area: 'knee', count: 1 },
-      { area: 'hamstring', count: 1 },
-      { area: 'ankle', count: 1 },
-      { area: 'calf', count: 1 },
+      { name: 'knee', key: 'knee', value: 5 },
+      { name: 'ankle', key: 'ankle', value: 4 },
+      { name: 'hamstring', key: 'hamstring', value: 3 },
+      { name: 'back', key: 'back', value: 1 },
+      { name: 'shoulder', key: 'shoulder', value: 1 },
+    ],
+    byPosition: [
+      { name: 'midfielder', key: 'midfielder', value: 6 },
+      { name: 'defender', key: 'defender', value: 4 },
+      { name: 'forward', key: 'forward', value: 3 },
+      { name: 'goalkeeper', key: 'goalkeeper', value: 1 },
+    ],
+    bySeverity: [
+      { name: 'mild', key: 'mild', value: 5 },
+      { name: 'moderate', key: 'moderate', value: 5 },
+      { name: 'severe', key: 'severe', value: 3 },
+      { name: 'critical', key: 'critical', value: 1 },
+    ],
+    byOccasion: [
+      { name: 'training', key: 'training', value: 9 },
+      { name: 'match', key: 'match', value: 5 },
+    ],
+    byMechanism: [
+      { name: 'overuse', key: 'overuse', value: 6 },
+      { name: 'collision', key: 'collision', value: 4 },
+      { name: 'twist', key: 'twist', value: 3 },
+      { name: 'unknown', key: 'unknown', value: 1 },
+    ],
+    avgRecoveryByType: [
+      { injuryType: 'ACL Knee Injury', avgDays: 45, sampleSize: 2 },
+      { injuryType: 'Muscle Tear', avgDays: 30, sampleSize: 2 },
+      { injuryType: 'Ankle Sprain', avgDays: 21, sampleSize: 4 },
+      { injuryType: 'Hamstring Strain', avgDays: 14, sampleSize: 5 },
+      { injuryType: 'Fracture', avgDays: 56, sampleSize: 1 },
+    ],
+  },
+  trainingLoad: {
+    injuriesPerPlayerMonth: 0.24,
+  },
+  rehab: {
+    activePrograms: 3,
+    completedInPeriod: 9,
+    efficiencyRatio: 1.08,
+    sessions: {
+      total: 54,
+      attended: 48,
+      missed: 4,
+      cancelled: 2,
+    },
+  },
+  availability: {
+    weekly: [
+      { label: 'July A', availabilityRate: 91.7, available: 22, unavailable: 2 },
+      { label: 'July B', availabilityRate: 83.3, available: 20, unavailable: 4 },
+      { label: 'August A', availabilityRate: 87.5, available: 21, unavailable: 3 },
+      { label: 'August B', availabilityRate: 79.2, available: 19, unavailable: 5 },
+      { label: 'September A', availabilityRate: 83.3, available: 20, unavailable: 4 },
+      { label: 'September B', availabilityRate: 91.7, available: 22, unavailable: 2 },
+      { label: 'October A', availabilityRate: 95.8, available: 23, unavailable: 1 },
+      { label: 'October B', availabilityRate: 87.5, available: 21, unavailable: 3 },
+      { label: 'November A', availabilityRate: 83.3, available: 20, unavailable: 4 },
+      { label: 'November B', availabilityRate: 91.7, available: 22, unavailable: 2 },
+    ],
+  },
+  equipment: {
+    byStatus: [
+      { name: 'excellent', key: 'excellent', value: 9 },
+      { name: 'good', key: 'good', value: 7 },
+      { name: 'needs_maintenance', key: 'needs_maintenance', value: 3 },
+      { name: 'out_of_service', key: 'out_of_service', value: 1 },
+    ],
+    topUtilization: [
+      { id: 1, name: 'Advanced Stretching Machine', usageCount: 91, status: 'excellent', location: 'Main Hall' },
+      { id: 2, name: 'Rehabilitation Bike', usageCount: 78, status: 'good', location: 'Rehab Room' },
+      { id: 3, name: 'Cold Water Pool', usageCount: 65, status: 'excellent', location: 'Main Hall' },
+      { id: 4, name: 'Ultrasound Device', usageCount: 58, status: 'good', location: 'Clinic' },
+      { id: 5, name: 'TENS Machine', usageCount: 44, status: 'excellent', location: 'Clinic' },
+      { id: 6, name: 'Physiotherapy Bed', usageCount: 41, status: 'good', location: 'Clinic' },
+    ],
+  },
+  supplies: {
+    burnByCategory: [
+      { category: 'medication', label: 'Medication', quantity: 158 },
+      { category: 'consumable', label: 'Consumables', quantity: 224 },
+      { category: 'topical', label: 'Topical', quantity: 88 },
+      { category: 'supplement', label: 'Supplements', quantity: 72 },
+      { category: 'equipment_consumable', label: 'Equipment Consumables', quantity: 38 },
+    ],
+  },
+  appointments: {
+    byStatus: [
+      { name: 'completed', key: 'completed', value: 32 },
+      { name: 'scheduled', key: 'scheduled', value: 8 },
+      { name: 'cancelled', key: 'cancelled', value: 4 },
+      { name: 'no_show', key: 'no_show', value: 2 },
     ],
   },
   performance: {
@@ -761,12 +854,68 @@ const statisticsAnalytics = {
       { id: 19, name: 'Harry Kane', overall_score_pct: 87 },
       { id: 12, name: 'Declan Rice', overall_score_pct: 88 },
     ],
+    monthlyTrend: [
+      { month: '2024-08', avgScore: 71.5, count: 8 },
+      { month: '2024-09', avgScore: 73.2, count: 10 },
+      { month: '2024-10', avgScore: 75.8, count: 12 },
+      { month: '2024-11', avgScore: 74.9, count: 11 },
+      { month: '2024-12', avgScore: 77.3, count: 9 },
+      { month: '2025-01', avgScore: 79.1, count: 10 },
+      { month: '2025-02', avgScore: 78.4, count: 8 },
+      { month: '2025-03', avgScore: 81.2, count: 10 },
+    ],
   },
   vitals: {
     avgHeartRate: 68,
     avgFatigue: 3.8,
     avgSleep: 7.8,
     avgSpo2: 98,
+    readingsCount: 184,
+    abnormalCount: 14,
+    abnormalRatePct: 7.6,
+  },
+  files: {
+    byType: [
+      { name: 'xray', key: 'xray', value: 18 },
+      { name: 'mri', key: 'mri', value: 9 },
+      { name: 'report', key: 'report', value: 27 },
+      { name: 'lab', key: 'lab', value: 14 },
+      { name: 'scan', key: 'scan', value: 6 },
+    ],
+  },
+  bodyMeasurements: {
+    recordsInPeriod: 52,
+  },
+  performanceKpis: {
+    overallScore: 76.6,
+    physicalReadiness: 80.3,
+    mentalReadiness: 73.1,
+    vo2Max: 51.8,
+    maxSpeed: 30.5,
+  },
+  performanceRadar: [
+    { metric: 'strength', value: 76, fullMark: 100 },
+    { metric: 'endurance', value: 81, fullMark: 100 },
+    { metric: 'flexibility', value: 69, fullMark: 100 },
+    { metric: 'agility', value: 74, fullMark: 100 },
+    { metric: 'reaction', value: 83, fullMark: 100 },
+  ],
+  injuriesByWeek: [
+    { week: 'Week 30', value: 1 },
+    { week: 'Week 31', value: 3 },
+    { week: 'Week 32', value: 2 },
+    { week: 'Week 33', value: 0 },
+    { week: 'Week 34', value: 2 },
+    { week: 'Week 35', value: 1 },
+    { week: 'Week 36', value: 3 },
+    { week: 'Week 37', value: 1 },
+    { week: 'Week 38', value: 0 },
+    { week: 'Week 39', value: 1 },
+  ],
+  meta: {
+    dateFrom: '2024-07-01',
+    dateTo: '2025-06-30',
+    season: '2024-2025',
   },
 };
 
@@ -840,7 +989,19 @@ const filesStats = {
 
 // ── URL → mock response map ───────────────────────────────────────────────
 
+// ── Mock auth user ────────────────────────────────────────────────────────
+
+const mockAuthUser = {
+  id: 1,
+  name: 'James Wilson',
+  email: 'admin@elitefc.com',
+  role: 'club_admin',
+  is_active: true,
+};
+
 export const MOCK_RESPONSES = {
+  '/auth/login':                   { success: true, data: { user: mockAuthUser, accessToken: 'mock-token-demo', refreshToken: 'mock-refresh-demo' } },
+  '/auth/me':                      { success: true, data: mockAuthUser },
   '/dashboard/today-appointments': { success: true, data: todayAppointments },
   '/dashboard/stats':              { success: true, data: dashboardStats },
   '/dashboard/charts':             { success: true, data: dashboardCharts },
@@ -874,6 +1035,19 @@ export const MOCK_RESPONSES = {
   '/audit':                        { success: true, data: auditLogs, meta: { total: 10, page: 1, limit: 20, totalPages: 1 } },
   '/files/stats':                  { success: true, data: filesStats },
   '/files':                        { success: true, data: files, meta: { total: 6 } },
+  // Reports endpoints
+  '/reports/players':              { success: true, data: players.map(p => ({ id: p.id, name: p.name, jersey_number: p.jersey_number })) },
+  '/reports/team-health':          { success: true, data: { healthIndex: 85, readyPlayers: 18, injuredPlayers: 4, totalPlayers: 22 } },
+  '/reports/injuries':             { success: true, data: injuries },
+  '/reports/rehabilitation':       { success: true, data: rehabilitation },
+  '/reports/vitals':               { success: true, data: vitals },
+  '/reports/appointments':         { success: true, data: appointments },
+  '/reports/performance':          { success: true, data: performance },
+  '/reports/equipment':            { success: true, data: equipment },
+  '/reports/supplies':             { success: true, data: equipmentSuppliesList },
+  '/reports/measurements':         { success: true, data: measurements },
+  // Settings
+  '/settings':                     { success: true, data: { clubName: 'Elite FC', timezone: 'UTC', language: 'ar', notificationsEnabled: true } },
 };
 
 function getDynamicMock(path) {
@@ -955,6 +1129,48 @@ function getDynamicMock(path) {
     const id = parseInt(equipMatch[1]);
     const eq = equipment.find((e) => e.id === id) || equipment[0];
     return { success: true, data: eq };
+  }
+
+  // /equipment/supplies/:id
+  const supplyMatch = path.match(/^\/equipment\/supplies\/(\d+)$/);
+  if (supplyMatch) {
+    const id = parseInt(supplyMatch[1]);
+    const supply = equipmentSuppliesList.find((s) => s.id === id) || equipmentSuppliesList[0];
+    return { success: true, data: supply };
+  }
+
+  // /equipment/supplies/:id/transactions
+  if (/^\/equipment\/supplies\/\d+\/transactions$/.test(path)) {
+    return { success: true, data: [], meta: { total: 0 } };
+  }
+
+  // /equipment/:id/maintenance
+  if (/^\/equipment\/\d+\/maintenance$/.test(path)) {
+    return { success: true, data: [], meta: { total: 0 } };
+  }
+
+  // /reports/player/:id
+  const reportPlayerMatch = path.match(/^\/reports\/player\/(\d+)$/);
+  if (reportPlayerMatch) {
+    const id = parseInt(reportPlayerMatch[1]);
+    const player = players.find((p) => p.id === id) || players[0];
+    return { success: true, data: { player, injuries: [], vitals: [], performance: [] } };
+  }
+
+  // /measurements/player/:id
+  const measPlayerMatch = path.match(/^\/measurements\/player\/(\d+)$/);
+  if (measPlayerMatch) {
+    const id = parseInt(measPlayerMatch[1]);
+    const playerMeasurements = measurements.filter((m) => m.player_id === id);
+    return { success: true, data: playerMeasurements };
+  }
+
+  // /users/:id
+  const userMatch = path.match(/^\/users\/(\d+)$/);
+  if (userMatch) {
+    const id = parseInt(userMatch[1]);
+    const user = users.find((u) => u.id === id) || users[0];
+    return { success: true, data: user };
   }
 
   return null;

@@ -67,10 +67,8 @@ api.interceptors.response.use(
 
     // Fall back to mock data when backend is unreachable
     const method = error.config?.method?.toLowerCase();
-    if (method === 'get' || method === undefined) {
-      const mock = getMockForUrl(error.config?.url);
-      if (mock) return Promise.resolve({ data: mock });
-    }
+    const mock = getMockForUrl(error.config?.url);
+    if (mock) return Promise.resolve({ data: mock });
 
     return Promise.reject(error);
   }
